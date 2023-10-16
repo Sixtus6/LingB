@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:shimmer/shimmer.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -27,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         children: [
           Container(
-            height: SizeConfigs.getPercentageHeight(70),
+            height: SizeConfigs.getPercentageWidth(123),
             width: double.infinity,
             decoration: boxDecorationWithRoundedCorners(
               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -59,25 +60,42 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(6)),
             child: Row(
               children: [
                 Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Communicate",
-                        style: TextStyle(fontSize: 17),
+                      Shimmer.fromColors(
+                        baseColor: Colors.white,
+                        highlightColor: Colors.blue.shade100,
+                        child: const Text(
+                          'Communicate',
+                          style: TextStyle(
+                              fontSize: 30.0, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      Text(
-                        "easilly without",
-                        style: TextStyle(fontSize: 17),
+                      Shimmer.fromColors(
+                        baseColor: Colors.white,
+                        highlightColor: Colors.blue.shade100,
+                        child: const Text(
+                          'easily without',
+                          style: TextStyle(
+                              fontSize: 30.0, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      Text(
-                        "language barrier",
-                        style: TextStyle(fontSize: 17),
+                      Shimmer.fromColors(
+                        baseColor: Colors.white,
+                        highlightColor: Colors.blue.shade100,
+                        child: const Text(
+                          'language barrier',
+                          style: TextStyle(
+                              fontSize: 30.0, fontWeight: FontWeight.bold),
+                        ),
                       ),
+
+                      
                     ],
                   ),
                 ),

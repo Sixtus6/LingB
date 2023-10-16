@@ -29,13 +29,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             height: SizeConfigs.getPercentageWidth(123),
             width: double.infinity,
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //       // opacity: 0.7,
-            //       image: AssetImage("assets/icon/bg.png"),
-            //       fit: BoxFit.cover),
-            // ),
-
             decoration: boxDecorationWithRoundedCorners(
               borderRadius: BorderRadius.all(Radius.circular(18)),
               backgroundColor: Colors.black,
@@ -48,7 +41,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // padding: EdgeInsets.all(8),
             child: Column(
               children: [
-                //  SizeConfigs.getPercentageWidth(7).toInt().height,
                 Row(
                   children: [
                     Text("").expand(),
@@ -65,6 +57,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ],
             ),
           ),
+          // RichText(
+          //   text: TextSpan(
+          //     style: TextStyle(
+          //       color: ColorConfig.secondary,
+          //       fontSize: 20,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //     children: <TextSpan>[
+          //       TextSpan(
+          //         text: "Welcome To",
+          //         //  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+          //       ),
+          //       TextSpan(
+          //         text: " MUUV.",
+          //         style: TextStyle(color: ColorConfig.primary),
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

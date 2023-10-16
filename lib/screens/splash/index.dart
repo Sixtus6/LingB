@@ -13,7 +13,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void flagSwitch(context) {
-    Timer(const Duration(seconds: 4), () {});
+    Timer(const Duration(seconds: 4), () {
+      
+    });
   }
 
   @override

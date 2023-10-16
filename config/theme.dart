@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:muuv/config/color.dart';
+
+import 'color.dart';
 
 class ThemeClass {
   static final ValueNotifier<ThemeMode> themeNotifier =

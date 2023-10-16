@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lottie/lottie.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class JoinRoomScreen extends StatefulWidget {
@@ -23,13 +24,43 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
       systemNavigationBarIconBrightness:
           Brightness.light, // Change the navigation bar icons' color
     ));
-    return Scaffold(
-        body: Column(
-      children: [
-        
-        Container(),
-      ],
-    ));
+    return SafeArea(
+      child: Scaffold(
+          body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizeConfigs.getPercentageWidth(1).toInt().height,
+            Lottie.asset(
+              "assets/lottie/onboard1.json",
+            ),
+            Padding(
+              padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(8)),
+              child: const Text(
+                "Join Chat Room",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              decoration: boxDecorationWithRoundedCorners(
+                backgroundColor: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(55),
+                    topRight: Radius.circular(55)),
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.red, // Color of the top border line
+                    width: 2.0,
+
+                    // Thickness of the top border line
+                  ),
+                ),
+              ),
+              height: SizeConfigs.getPercentageWidth(134),
+            ),
+          ],
+        ),
+      )),
+    );
   }
 }
 

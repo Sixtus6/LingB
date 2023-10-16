@@ -27,12 +27,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         height: 200,
         width: double.infinity,
         decoration: boxDecorationWithRoundedCorners(
-          backgroundColor: Colors.amber,
-          decorationImage: DecorationImage(
+          // backgroundColor: Colors.amber,
+          decorationImage: const DecorationImage(
               opacity: 0.7,
-              image: AssetImage("assets/images/background/background.png"),
+              image: AssetImage("assets/images/bg.png"),
               fit: BoxFit.cover),
-
         ),
 
         // padding: EdgeInsets.all(8),

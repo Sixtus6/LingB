@@ -27,7 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         children: [
           Container(
-            height: SizeConfigs.getPercentageWidth(123),
+            height: SizeConfigs.getPercentageHeight(70),
             width: double.infinity,
             decoration: boxDecorationWithRoundedCorners(
               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -47,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Padding(
                       padding:
                           EdgeInsets.all(SizeConfigs.getPercentageWidth(14)),
-                      child: Text(
+                      child: const Text(
                         "Ling B",
                         style: TextStyle(fontSize: 17),
                       ),
@@ -57,6 +57,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ],
             ),
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Communicate",
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      Text(
+                        "easilly without",
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      Text(
+                        "language barrier",
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           // RichText(
           //   text: TextSpan(
           //     style: TextStyle(

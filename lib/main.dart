@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/config/theme.dart';
 import 'package:lingb/screens/splash/index.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: ColorConfig.black, // Change the status bar color
+    statusBarIconBrightness:
+        Brightness.light, // Change the status bar icons' color
+    systemNavigationBarColor:
+        ColorConfig.black, // Change the navigation bar color
+    systemNavigationBarIconBrightness:
+        Brightness.light, // Change the navigation bar icons' color
+  ));
   runApp(const MyApp());
 }
 
@@ -13,12 +25,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MainScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeClass.mainTheme,
+      home: const MainScreen(),
     );
   }
 }

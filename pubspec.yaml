@@ -21,6 +21,7 @@ dependencies:
   lottie: ^2.6.0
   nb_utils: ^6.0.4
   provider: ^6.0.5
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +48,10 @@ flutter:
     # - assets/images/logo/
     # - assets/images/splash/
 
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

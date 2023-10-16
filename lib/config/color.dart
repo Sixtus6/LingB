@@ -10,8 +10,8 @@ class ColorConfig {
   static Color carbackground = Color(0xFFd0dfee);
   static Color red = const Color(0xFFFF0523);
   static Color facebook = const Color(0xFF3E74BA);
-  static Color black = Color.fromARGB(255, 41, 37, 37);
-  static Color splash = const Color(0xFFecf3fb);
+  static Color black = Color.fromARGB(255, 0, 0, 0);
+  static Color splash = Color.fromARGB(255, 0, 0, 0);
   static Color dotColor = const Color(0xFFD9D9D9);
   static Color formColor = const Color(0xFF2E3850);
   static Color inputBorderColor = const Color(0xFF5B49CC);

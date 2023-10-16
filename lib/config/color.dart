@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class ColorConfig {
   static Color scaffold = const Color(0xFFecf3fb);
   static Color secondary = const Color(0xFF4a4d80);
-  static Color primary = const Color(0xFF8572e8);
+  static Color primary = const Color(0xFF2d64f7);
+  static Color primary2 = const Color(0xFF0123db);
   static Color primaryLight = const Color(0xFF8572e8).withOpacity(0.3);
   static Color white = Color.fromRGBO(255, 255, 255, 1);
   static Color carbackground = Color(0xFFd0dfee);

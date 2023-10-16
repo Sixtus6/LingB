@@ -18,10 +18,10 @@ class ThemeClass {
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black),
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
-      ),
+          statusBarColor: Colors.black,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.light,
+          systemNavigationBarColor: Color(0xFF0123db)),
     ),
     brightness: Brightness.dark,
     textTheme: TextTheme(

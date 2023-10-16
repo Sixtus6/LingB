@@ -94,8 +94,54 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               fontSize: 30.0, fontWeight: FontWeight.bold),
                         ),
                       ),
-
-                      
+                      SizeConfigs.getPercentageWidth(4).toInt().height,
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/icon/check.png",
+                            height: 25,
+                            width: 25,
+                            // color: ColorConfig.red,
+                          ),
+                          const Text(
+                            ' ',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                          const Text(
+                            'Secure, private messaging',
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizeConfigs.getPercentageWidth(10).toInt().height,
+                      Container(
+                        width: SizeConfigs.getPercentageWidth(85),
+                        height: SizeConfigs.getPercentageWidth(18),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shadowColor: ColorConfig.primary,
+                              elevation: 10,
+                              backgroundColor: ColorConfig.white,
+                              foregroundColor: ColorConfig.primary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    34), // Adjust the radius here
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              'Get Started',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            )),
+                      )
                     ],
                   ),
                 ),

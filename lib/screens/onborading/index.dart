@@ -14,11 +14,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: ColorConfig.black, // Change the status bar color
+      statusBarColor: Colors.transparent, // Change the status bar color
       statusBarIconBrightness:
           Brightness.light, // Change the status bar icons' color
-      systemNavigationBarColor: Colors.transparent,
-      //   ColorConfig.black, // Change the navigation bar color
+      systemNavigationBarColor:
+          ColorConfig.black, // Change the navigation bar color
       systemNavigationBarIconBrightness:
           Brightness.light, // Change the navigation bar icons' color
     ));

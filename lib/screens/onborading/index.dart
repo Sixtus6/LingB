@@ -27,7 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         children: [
           Container(
-            height: SizeConfigs.getPercentageWidth(120),
+            height: SizeConfigs.getPercentageWidth(123),
             width: double.infinity,
             // decoration: BoxDecoration(
             //   image: DecorationImage(
@@ -37,6 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // ),
 
             decoration: boxDecorationWithRoundedCorners(
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               backgroundColor: Colors.black,
               decorationImage: const DecorationImage(
                   // opacity: 0.7,
@@ -45,8 +46,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
 
             // padding: EdgeInsets.all(8),
-            child: Row(
-              children: [Text("LingB")],
+            child: Column(
+              children: [
+                //  SizeConfigs.getPercentageWidth(7).toInt().height,
+                Row(
+                  children: [
+                    Text("").expand(),
+                    Padding(
+                      padding:
+                          EdgeInsets.all(SizeConfigs.getPercentageWidth(14)),
+                      child: Text(
+                        "Ling B",
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ],

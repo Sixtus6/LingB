@@ -24,13 +24,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ));
     return Scaffold(
       body: Container(
-        height: 200,
+        height: 300,
         width: double.infinity,
         decoration: boxDecorationWithRoundedCorners(
           // backgroundColor: Colors.amber,
           decorationImage: const DecorationImage(
-              opacity: 0.7,
-              image: AssetImage("assets/images/bg.png"),
+              // opacity: 0.7,
+              image: AssetImage("assets/icon/bg.png"),
               fit: BoxFit.cover),
         ),
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/screens/chat_room/join_room.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -132,7 +133,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     34), // Adjust the radius here
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              JoinRoomScreen().launch(context, isNewTask: true);
+                            },
                             child: const Text(
                               'Get Started',
                               style: TextStyle(

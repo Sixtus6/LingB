@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lingb/config/color.dart';
+import 'package:lingb/screens/onborading/index.dart';
 import 'package:lottie/lottie.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,8 +15,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void flagSwitch(context) {
-    Timer(const Duration(seconds: 4), () {
-      
+    Timer(const Duration(seconds: 3), () {
+      OnboardingScreen().launch(context, isNewTask: true);
     });
   }
 

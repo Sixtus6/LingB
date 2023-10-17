@@ -96,13 +96,41 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                         return null;
                       },
                     ),
+                    SizeConfigs.getPercentageWidth(6).toInt().height,
                     DropdownMenuWithDecoration(),
-                                  SizedBox(height: 20.0),
-              Consumer<JoinRoomProvider>(
-                builder: (context, joinRoomProvider, _) {
-                  return Text('Selected Item: ${joinRoomProvider.selectedItem}');
-                }),
-
+                    SizeConfigs.getPercentageWidth(18).toInt().height,
+                    Container(
+                      width: SizeConfigs.getPercentageWidth(85),
+                      height: SizeConfigs.getPercentageWidth(18),
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shadowColor: ColorConfig.primary,
+                            elevation: 10,
+                            backgroundColor: ColorConfig.white,
+                            foregroundColor: ColorConfig.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  34), // Adjust the radius here
+                            ),
+                          ),
+                          onPressed: () {
+                            //  JoinRoomScreen().launch(context, isNewTask: true);
+                          },
+                          child: const Text(
+                            'Join',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          )),
+                    ),
+                    SizeConfigs.getPercentageWidth(16).toInt().height,
+                    // Consumer<JoinRoomProvider>(
+                    //     builder: (context, joinRoomProvider, _) {
+                    //   return Text(
+                    //       'Selected Item: ${joinRoomProvider.selectedItem}');
+                    // }),
                   ],
                 ),
               ),

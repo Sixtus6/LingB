@@ -21,7 +21,7 @@ class ThemeClass {
           statusBarColor: Colors.black,
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.light,
-          systemNavigationBarColor: Color(0xFF0123db)),
+          systemNavigationBarColor: Colors.black),
     ),
     brightness: Brightness.dark,
     textTheme: TextTheme(

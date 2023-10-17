@@ -2,14 +2,15 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
-class Chat_Message extends StatefulWidget {
-  const Chat_Message(
+class ChatRoom extends StatefulWidget {
+  const ChatRoom(
       {super.key,
       required this.img,
       required this.name,
@@ -23,12 +24,12 @@ class Chat_Message extends StatefulWidget {
   final bool? isOnline;
 
   @override
-  State<Chat_Message> createState() => _Chat_MessageState();
+  State<ChatRoom> createState() => _ChatRoomState();
 }
 
-class _Chat_MessageState extends State<Chat_Message> {
+class _ChatRoomState extends State<ChatRoom> {
   final List<types.Message> _messages = [];
-  final _user = types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
+  final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
 
   void _addMessage(types.Message message) {
     setState(() {
@@ -57,13 +58,14 @@ class _Chat_MessageState extends State<Chat_Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.cardColor,
       appBar: AppBar(
-        backgroundColor: context.cardColor,
+        toolbarHeight: SizeConfigs.getPercentageWidth(16),
+        backgroundColor: ColorConfig.black,
         title: Column(
           children: [
             Text(widget.name,
-                    style: secondaryTextStyle(weight: FontWeight.bold))
+                    style: secondaryTextStyle(
+                        weight: FontWeight.bold, color: ColorConfig.white))
                 .paddingBottom(SizeConfigs.getPercentageWidth(1)),
             // SizeConfigs.getPercentageWidth(1).toInt().height,
             Center(
@@ -85,36 +87,45 @@ class _Chat_MessageState extends State<Chat_Message> {
         actions: [
           CircleAvatar(
               radius: SizeConfigs.getPercentageWidth(7),
-              backgroundColor: context.cardColor,
+              backgroundColor: ColorConfig.secondary,
               backgroundImage: NetworkImage(widget.img)),
           // .paddingLeft(SizeConfigs.getPercentageWidth(5)),
           SizeConfigs.getPercentageWidth(3).toInt().width,
         ],
-        elevation: 0,
+        elevation: 10,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: context.iconColor),
+          icon: Icon(Icons.arrow_back, color: ColorConfig.primary),
           onPressed: () {
             finish(context);
           },
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            child: Chat(
-              theme: DefaultChatTheme(
-                  primaryColor: context.cardColor,
-                  secondaryColor: ColorConfig.green,
-                  inputBackgroundColor: context.cardColor,
-                  backgroundColor: context.scaffoldBackgroundColor),
-              showUserNames: true,
-              messages: _messages,
-              textMessageOptions: TextMessageOptions(isTextSelectable: true),
-              onSendPressed: _handleSendPressed,
-              user: _user,
-            ),
-          ).withSize(width: double.infinity).expand(),
+          Image.asset(
+            "assets/icon/lingb.png", // Replace with your image asset
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Column(
+            children: [
+              Chat(
+                theme: DefaultChatTheme(
+                  backgroundColor: Colors.transparent,
+                  primaryColor: Color(0xFF3385FF),
+                  secondaryColor: ColorConfig.secondary,
+                  inputBackgroundColor: ColorConfig.black,
+                ),
+                showUserNames: true,
+                messages: _messages,
+                textMessageOptions: TextMessageOptions(isTextSelectable: true),
+                onSendPressed: _handleSendPressed,
+                user: _user,
+              ).withSize(width: double.infinity).expand(),
+            ],
+          ),
         ],
       ),
     );

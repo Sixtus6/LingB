@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/screens/chat_room/index.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
 import 'package:lingb/widget/dropdown.dart';
@@ -114,6 +115,11 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             ),
                           ),
                           onPressed: () {
+                            ChatRoom(
+                                    img:
+                                        "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
+                                    name: userNameController.text)
+                                .launch(context);
                             //  JoinRoomScreen().launch(context, isNewTask: true);
                           },
                           child: const Text(

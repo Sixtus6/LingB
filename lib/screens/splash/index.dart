@@ -16,7 +16,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void flagSwitch(context) {
     Timer(const Duration(seconds: 3), () {
-      OnboardingScreen().launch(context, isNewTask: true);
+      OnboardingScreen().launch(context,
+          pageRouteAnimation: PageRouteAnimation.Fade, isNewTask: true);
     });
   }
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lingb/config/color.dart';
+import 'package:lingb/config/size.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
 class DropdownMenuWithDecoration extends StatelessWidget {
@@ -8,27 +11,38 @@ class DropdownMenuWithDecoration extends StatelessWidget {
     return Consumer<JoinRoomProvider>(
       builder: (context, dropdownModel, _) {
         return Container(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(
+              left: SizeConfigs.getPercentageWidth(12),
+              right: SizeConfigs.getPercentageWidth(12)),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(10.0),
           ),
-          child: DropdownButton<String>(
-            value: dropdownModel.selectedItem,
-            onChanged: (String? newValue) {
-              if (newValue != null) {
-                dropdownModel.setSelectedItem(newValue);
-              }
-            },
-            items: _items.map<DropdownMenuItem<String>>(
-              (String value) {
-                print(value.runtimeType);
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: dropdownModel.selectedItem,
+              iconEnabledColor: ColorConfig.primary,
+              borderRadius: BorderRadius.circular(10),
+              onChanged: (String? newValue) {
+                if (newValue != null) {
+                  dropdownModel.setSelectedItem(newValue);
+                }
               },
-            ).toList(),
+              items: _items.map<DropdownMenuItem<String>>(
+                (String value) {
+                  print(value.runtimeType);
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  );
+                },
+              ).toList(),
+            ),
           ),
         );
       },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/widget/textfield.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:shimmer/shimmer.dart';
@@ -61,6 +62,22 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                 ),
               ),
               height: SizeConfigs.getPercentageWidth(133),
+              child: Column(
+                children: [
+                   CustomTextField(
+        icon: Icons.person,
+        isEmail: false,
+        text: 'Full Name',
+     myController: signupNameController,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Field cannot be empty';
+          }
+          return null;
+        },
+      ),
+                ],
+              ),
             ),
           ],
         ),

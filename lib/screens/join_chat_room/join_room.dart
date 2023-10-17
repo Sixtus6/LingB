@@ -71,7 +71,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                     CustomTextField(
                       icon: Icons.chat_rounded,
                       isEmail: false,
-                      text: 'Room ID',
+                      text: 'Chat Room ID',
                       myController: roomIDController,
                       validator: (value) {
                         if (value!.isEmpty) {

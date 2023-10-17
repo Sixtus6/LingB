@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class JoinRoomProvider with ChangeNotifier {
-  late String _selectedItem;
+ String _selectedItem = 'Select your preferred language'; // Initialize to an initial value
 
   String get selectedItem => _selectedItem;
 

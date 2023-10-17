@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/config/theme.dart';
+import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/screens/splash/index.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -15,7 +17,27 @@ void main() {
     systemNavigationBarIconBrightness:
         Brightness.light, // Change the navigation bar icons' color
   ));
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        // ChangeNotifierProvider<UserScreenProvider>(
+        //     create: (_) => UserScreenProvider()),
+        // ChangeNotifierProvider<RiderScreenProvider>(
+        //     create: (_) => RiderScreenProvider()),
+        // ChangeNotifierProvider<UserAuthProvider>(
+        //     create: (_) => UserAuthProvider()),
+        // ChangeNotifierProvider<UserGoogleMapProvider>(
+        //     create: (_) => UserGoogleMapProvider()),
+        // ChangeNotifierProvider<RiderAuthProvider>(
+        //     create: (_) => RiderAuthProvider()),
+        // ChangeNotifierProvider<RiderGoogleMapProvider>(
+        //     create: (_) => RiderGoogleMapProvider()),
+        ChangeNotifierProvider<JoinRoomProvider>(
+            create: (_) => JoinRoomProvider())
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
+import 'package:lingb/widget/dropdown.dart';
 import 'package:lingb/widget/textfield.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class JoinRoomScreen extends StatefulWidget {
@@ -93,6 +96,13 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                         return null;
                       },
                     ),
+                    DropdownMenuWithDecoration(),
+                                  SizedBox(height: 20.0),
+              Consumer<JoinRoomProvider>(
+                builder: (context, joinRoomProvider, _) {
+                  return Text('Selected Item: ${joinRoomProvider.selectedItem}');
+                }),
+
                   ],
                 ),
               ),

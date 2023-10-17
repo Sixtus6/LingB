@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/utils/constants.dart';
 import 'package:lingb/widget/textfield.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -54,29 +55,46 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                 //     image: AssetImage("assets/icon/lingb.png"),
                 //     fit: BoxFit.cover),
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(55),
-                    topRight: Radius.circular(55)),
+                    topLeft: Radius.circular(75),
+                    topRight: Radius.circular(75)),
                 border: Border.all(
                   color: Colors.transparent, // Color of the border line
                   width: 0.5, // Thickness of the border line
                 ),
               ),
-              height: SizeConfigs.getPercentageWidth(133),
-              child: Column(
-                children: [
-                   CustomTextField(
-        icon: Icons.person,
-        isEmail: false,
-        text: 'Full Name',
-     myController: signupNameController,
-        validator: (value) {
-          if (value!.isEmpty) {
-            return 'Field cannot be empty';
-          }
-          return null;
-        },
-      ),
-                ],
+              // height: SizeConfigs.getPercentageWidth(133),
+              child: Padding(
+                padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(8)),
+                child: Column(
+                  children: [
+                    SizeConfigs.getPercentageWidth(6).toInt().height,
+                    CustomTextField(
+                      icon: Icons.chat_rounded,
+                      isEmail: false,
+                      text: 'Room ID',
+                      myController: roomIDController,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Field cannot be empty';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizeConfigs.getPercentageWidth(6).toInt().height,
+                    CustomTextField(
+                      icon: Icons.person_4,
+                      isEmail: false,
+                      text: 'Username',
+                      myController: userNameController,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Field cannot be empty';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

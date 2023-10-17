@@ -38,7 +38,7 @@ class CustomTextField extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validator,
         controller: myController,
-        style: TextStyle(color: ColorConfig.secondary),
+        style: TextStyle(color: ColorConfig.white),
         obscureText: obscure!,
         keyboardType: isEmail
             ? TextInputType.emailAddress
@@ -71,7 +71,7 @@ class CustomTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(35.0)),
               borderSide: BorderSide(
-                color: ColorConfig.secondary.withOpacity(0.4),
+                color: ColorConfig.secondary.withOpacity(0.5),
               ),
             ),
             errorBorder: OutlineInputBorder(
@@ -89,12 +89,12 @@ class CustomTextField extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(35.0)),
               borderSide: BorderSide(
-                color: ColorConfig.secondary.withOpacity(0.4),
+                color: ColorConfig.secondary,
               ),
             ),
             contentPadding: const EdgeInsets.all(10),
             hintText: text,
-            hintStyle: TextStyle(fontSize: 14, color: ColorConfig.secondary)),
+            hintStyle: TextStyle(fontSize: 14, color: Colors.grey)),
       ),
     );
   }

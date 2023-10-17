@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
-import 'package:lingb/screens/chat_room/join_room.dart';
+import 'package:lingb/screens/join_chat_room/join_room.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 import 'package:shimmer/shimmer.dart';

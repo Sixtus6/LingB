@@ -116,7 +116,7 @@ class _ChatRoomState extends State<ChatRoom> {
                   backgroundColor: Colors.transparent,
                   primaryColor: Color(0xFF3385FF),
                   secondaryColor: ColorConfig.secondary,
-                  inputBackgroundColor: ColorConfig.black,
+                  inputBackgroundColor: Colors.grey.shade900,
                 ),
                 showUserNames: true,
                 messages: _messages,

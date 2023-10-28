@@ -28,32 +28,32 @@ class ChatRoom extends StatefulWidget {
 }
 
 class _ChatRoomState extends State<ChatRoom> {
-  final List<types.Message> _messages = [];
-  final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
+  // final List<types.Message> _messages = [];
+  // final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
 
-  void _addMessage(types.Message message) {
-    setState(() {
-      _messages.insert(0, message);
-    });
-  }
+  // void _addMessage(types.Message message) {
+  //   setState(() {
+  //     _messages.insert(0, message);
+  //   });
+  // }
 
-  String randomString() {
-    final random = Random.secure();
-    final values = List<int>.generate(16, (i) => random.nextInt(255));
-    print(values);
-    return base64UrlEncode(values);
-  }
+  // String randomString() {
+  //   final random = Random.secure();
+  //   final values = List<int>.generate(16, (i) => random.nextInt(255));
+  //   print(values);
+  //   return base64UrlEncode(values);
+  // }
 
-  void _handleSendPressed(types.PartialText message) {
-    final textMessage = types.TextMessage(
-      author: _user,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: randomString(),
-      text: message.text,
-    );
-    _addMessage(textMessage);
-    print(_messages);
-  }
+  // void _handleSendPressed(types.PartialText message) {
+  //   final textMessage = types.TextMessage(
+  //     author: _user,
+  //     createdAt: DateTime.now().millisecondsSinceEpoch,
+  //     id: randomString(),
+  //     text: message.text,
+  //   );
+  //   _addMessage(textMessage);
+  //   print(_messages);
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/config/theme.dart';
+import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/screens/splash/index.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +31,8 @@ void main() {
         //     create: (_) => UserGoogleMapProvider()),
         // ChangeNotifierProvider<RiderAuthProvider>(
         //     create: (_) => RiderAuthProvider()),
-        // ChangeNotifierProvider<RiderGoogleMapProvider>(
-        //     create: (_) => RiderGoogleMapProvider()),
+        ChangeNotifierProvider<ChatMessagesProvider>(
+            create: (_) => ChatMessagesProvider()),
         ChangeNotifierProvider<JoinRoomProvider>(
             create: (_) => JoinRoomProvider())
       ],

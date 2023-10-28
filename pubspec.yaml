@@ -25,6 +25,8 @@ dependencies:
   shimmer: ^3.0.0
   flutter_chat_ui: ^1.6.9
   flutter_chat_types: ^3.6.2
+  intl: ^0.17.0
+  socket_io_client: ^2.0.3+1
 
 dev_dependencies:
   flutter_test:

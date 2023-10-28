@@ -101,18 +101,23 @@ class _ChatRoomState extends State<ChatRoom> {
           onPressed: () {
             finish(context);
           },
+          //import 'package:socket_io_client/socket_io_client.dart' as io;
         ),
       ),
       body: Consumer<ChatMessagesProvider>(
         builder: (BuildContext context, provider, _) {
           return Container(
+            color: Colors.black,
             child: Stack(
               children: [
-                Image.asset(
-                  "assets/icon/lingb.png", // Replace with your image asset
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: double.infinity,
+                Opacity(
+                  opacity: 0.6,
+                  child: Image.asset(
+                    "assets/icon/lingb.png", // Replace with your image asset
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
                 ),
                 Column(
                   children: [
@@ -120,7 +125,8 @@ class _ChatRoomState extends State<ChatRoom> {
                       theme: DefaultChatTheme(
                         backgroundColor: Colors.transparent,
                         primaryColor: ColorConfig.primary,
-                        secondaryColor: Colors.white30,
+                        secondaryColor: Color(0xff4d4d4d).withOpacity(0.7),
+                        // secondaryColor: Colors.white30,
                         inputBackgroundColor: Colors.grey.shade900,
                       ),
                       showUserNames: true,

@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:provider/provider.dart';
 
 class ChatRoom extends StatefulWidget {
   const ChatRoom(
@@ -101,34 +103,38 @@ class _ChatRoomState extends State<ChatRoom> {
           },
         ),
       ),
-      body: Container(
-        child: Stack(
-          children: [
-            Image.asset(
-              "assets/icon/lingb.png", // Replace with your image asset
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            Column(
-              children: [
-                Chat(
-                  theme: DefaultChatTheme(
-                    backgroundColor: Colors.transparent,
-                    primaryColor: Color(0xFF3385FF),
-                    secondaryColor: ColorConfig.secondary,
-                    inputBackgroundColor: Colors.grey.shade900,
-                  ),
-                  showUserNames: true,
-                  messages: _messages,
-                  textMessageOptions: TextMessageOptions(isTextSelectable: true),
-                  onSendPressed: _handleSendPressed,
-                  user: _user,
-                ).withSize(width: double.infinity).expand(),
-              ],
-            ),
-          ],
-        ),
+      body: Consumer<ChatMessagesProvider>(builder: (BuildContext context, provider,_) {
+        return Container(
+          child: Stack(
+            children: [
+              Image.asset(
+                "assets/icon/lingb.png", // Replace with your image asset
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              Column(
+                children: [
+                  Chat(
+                    theme: DefaultChatTheme(
+                      backgroundColor: Colors.transparent,
+                      primaryColor: Color(0xFF3385FF),
+                      secondaryColor: ColorConfig.secondary,
+                      inputBackgroundColor: Colors.grey.shade900,
+                    ),
+                    showUserNames: true,
+                    messages: provider.messages,
+                    textMessageOptions: TextMessageOptions(isTextSelectable: true),
+                    onSendPressed: provider.handleSendPressed,
+                    user: provider.user,
+                  ).withSize(width: double.infinity).expand(),
+                ],
+              ),
+            ],
+          ),
+        );
+        },
+      
       ),
     );
   }

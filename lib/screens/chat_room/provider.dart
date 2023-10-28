@@ -5,7 +5,7 @@ import 'dart:math';
 
 class ChatMessagesProvider with ChangeNotifier {
   final List<types.Message> _messages = [];
-  final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
+  final user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
   List<types.Message> get messages => _messages;
 
   void addMessage(types.Message message) {
@@ -23,7 +23,7 @@ class ChatMessagesProvider with ChangeNotifier {
 
   void handleSendPressed(types.PartialText message) {
     final textMessage = types.TextMessage(
-      author: _user,
+      author: user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: randomString(),
       text: message.text,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/config/socket/socket_method.dart';
 import 'package:lingb/screens/chat_room/index.dart';
 import 'package:lingb/screens/join_chat_room/create-room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
@@ -21,6 +22,16 @@ class JoinRoomScreen extends StatefulWidget {
 }
 
 class _JoinRoomScreenState extends State<JoinRoomScreen> {
+  final SocketMethods _socketMethods = SocketMethods();
+
+  @override
+  void initState() {
+    _socketMethods.createRoomEvent(context);
+    print("initilized");
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

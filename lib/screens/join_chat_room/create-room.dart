@@ -3,6 +3,7 @@ import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CreateRoom extends StatefulWidget {
   final String id;
@@ -20,12 +21,15 @@ class _CreateRoomState extends State<CreateRoom> {
       elevation: 0,
       child: Container(
         // padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(40)),
+        decoration: boxDecorationWithRoundedCorners(
+            backgroundColor: Colors.grey.shade900),
+        // padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(40)),
         child: Column(
           children: [
             Row(
               children: [
                 Container().expand(),
-                Icon(
+                const Icon(
                   Icons.cancel,
                   //size: 25,
                 ).onTap(() {
@@ -34,22 +38,37 @@ class _CreateRoomState extends State<CreateRoom> {
               ],
             ),
             2.height,
-            Text(widget.id),
+            Text(
+              widget.id,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             SizeConfigs.getPercentageWidth(3).toInt().height,
-            Icon(
-              Icons.copy,
-              color: ColorConfig.primary,
-              //size: 25,
-            ).onTap(() {
-              copyToClipboard(widget.id);
-              toast("copied to clipboard");
-            })
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(
+                  Icons.copy,
+                  color: ColorConfig.primary,
+                  //size: 25,
+                ).onTap(() {
+                  copyToClipboard(widget.id);
+                  toast("copied to clipboard");
+                }),
+                Icon(
+                  Icons.share,
+                  color: ColorConfig.primary,
+                  //size: 25,
+                ).onTap(() {
+                  print("share");
+                  Share.share(
+                      'Join my chat-room, lets have a chat on LingB\n room id: ${widget.id}');
+                })
+              ],
+            )
           ],
         ),
-        decoration: boxDecorationWithRoundedCorners(
-            backgroundColor: Colors.grey.shade900),
       ).withSize(
-          height: SizeConfigs.getPercentageWidth(20),
+          height: SizeConfigs.getPercentageWidth(24),
           width: SizeConfigs.getPercentageWidth(100)),
     );
   }

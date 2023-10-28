@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/screens/chat_room/index.dart';
+import 'package:lingb/screens/join_chat_room/create-room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
 import 'package:lingb/widget/dropdown.dart';
@@ -96,8 +97,10 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                                 color: ColorConfig.primary,
                                 fontSize: 13,
                               ),
-                            ).onTap((){
-                              
+                            ).onTap(() {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => CreateRoom());
                             })
                           ],
                         )

@@ -100,7 +100,13 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             ).onTap(() {
                               showDialog(
                                   context: context,
-                                  builder: (context) => CreateRoom());
+                                  barrierDismissible: false,
+                                  builder: (context) => CreateRoom(
+                                        id: 'dskjhdkjshdkahdkjsdsahjkdsadhahdsa',
+                                      ));
+
+                              roomIDController.text =
+                                  "dskjhdkjshdkahdkjsdsahjkdsadhahdsa";
                             })
                           ],
                         )

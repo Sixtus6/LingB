@@ -120,7 +120,7 @@ class _ChatRoomState extends State<ChatRoom> {
                       theme: DefaultChatTheme(
                         backgroundColor: Colors.transparent,
                         primaryColor: Color(0xFF3385FF),
-                        secondaryColor: Colors.grey,
+                        secondaryColor: Colors.white30,
                         inputBackgroundColor: Colors.grey.shade900,
                       ),
                       showUserNames: true,
@@ -130,6 +130,7 @@ class _ChatRoomState extends State<ChatRoom> {
                           TextMessageOptions(isTextSelectable: true),
                       onSendPressed: provider.handleSendPressed,
                       user: provider.user,
+                      textMessageBuilder: provider.customTextMessageBuilders,
                     ).withSize(width: double.infinity).expand(),
                   ],
                 ),

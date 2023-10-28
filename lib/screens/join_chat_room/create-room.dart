@@ -34,6 +34,8 @@ class _CreateRoomState extends State<CreateRoom> {
                   //size: 25,
                 ).onTap(() {
                   finish(context);
+
+                  
                 })
               ],
             ),

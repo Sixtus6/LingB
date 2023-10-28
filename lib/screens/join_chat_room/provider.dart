@@ -28,14 +28,6 @@ class JoinRoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-//   void myRefactoredFunction(BuildContext context) async {
-//   if (hasUpdated) {
-//     print(roomData["roomid"].toString());
-//     await
-//   } else {
-//     print("it's false" + hasUpdated.toString());
-//   }
-// }
 
   String _selectedItem =
       'Select your preferred language'; // Initialize to an initial value

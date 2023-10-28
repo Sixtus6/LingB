@@ -101,24 +101,27 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                         Row(
                           children: [
                             Container().expand(),
-                            Text(
-                              'Create-Room',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorConfig.primary,
-                                fontSize: 13,
-                              ),
-                            ).onTap(() {
-                              showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (context) => CreateRoom(
-                                        id: 'dskjhdkjshdkahdkjsdsahjkdsadhahdsa',
-                                      ));
+                            Consumer<JoinRoomProvider>(
+                              builder: (BuildContext context, provider, _) {
+                                return Text(
+                                  'Create-Room',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: ColorConfig.primary,
+                                    fontSize: 13,
+                                  ),
+                                ).onTap(() async {
+                                  try {
+                                    _socketMethods.createRoom(context);
+                                  } finally {
+                                    // provider.myRefactoredFunction(context);
+                                  }
 
-                              roomIDController.text =
-                                  "dskjhdkjshdkahdkjsdsahjkdsadhahdsa";
-                            })
+                                  // roomIDController.text =
+                                  //     "dskjhdkjshdkahdkjsdsahjkdsadhahdsa";
+                                });
+                              },
+                            )
                           ],
                         )
                       ],

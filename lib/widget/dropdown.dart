@@ -39,7 +39,7 @@ class DropdownMenuWithDecoration extends StatelessWidget {
               },
               items: _items.map<DropdownMenuItem<String>>(
                 (String value) {
-                  print(value.runtimeType);
+                  /// print(value.runtimeType);
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(

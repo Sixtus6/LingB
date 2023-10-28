@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lingb/config/socket/socket_client.dart';
+import 'package:lingb/screens/join_chat_room/create-room.dart';
+import 'package:lingb/screens/join_chat_room/provider.dart';
+import 'package:provider/provider.dart';
 
 class SocketMethods {
   final _socket = SocketClient.instance.socket!;
@@ -16,14 +19,26 @@ class SocketMethods {
     "chat": ["chat-room-msg", "chat-room-error"]
   };
   //create  room socket
-  void createRoom() {
+  void createRoom(BuildContext context) {
     _socket.emit(event["create"], {});
+    // Provider.of<JoinRoomProvider>(context, listen: false).updateBoolState(false);
   }
 
   //create room listiner
   void createRoomEvent(BuildContext context) {
-    _socket.on(eventListeners["create"], (data) {
+    _socket.on(eventListeners["create"][0], (data) {
+      Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
+        data,
+      );
       print(data);
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => CreateRoom(
+          id: data["roomid"].toString() ?? "",
+        ),
+      );
     });
   }
 }

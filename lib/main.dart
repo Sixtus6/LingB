@@ -7,6 +7,8 @@ import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/screens/splash/index.dart';
 import 'package:provider/provider.dart';
+import 'package:socket_io_client/socket_io_client.dart' as io;
+
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

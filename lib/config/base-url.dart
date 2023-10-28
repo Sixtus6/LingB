@@ -1,3 +1,3 @@
 class Apis {
-  static String fetch_coin_api = "https://api.coingecko.com/api/v3/coins/";
+  static String socket_url = "https://2f9a-197-211-63-109.ngrok-free.app";
 }

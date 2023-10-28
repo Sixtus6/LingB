@@ -103,38 +103,40 @@ class _ChatRoomState extends State<ChatRoom> {
           },
         ),
       ),
-      body: Consumer<ChatMessagesProvider>(builder: (BuildContext context, provider,_) {
-        return Container(
-          child: Stack(
-            children: [
-              Image.asset(
-                "assets/icon/lingb.png", // Replace with your image asset
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
-              ),
-              Column(
-                children: [
-                  Chat(
-                    theme: DefaultChatTheme(
-                      backgroundColor: Colors.transparent,
-                      primaryColor: Color(0xFF3385FF),
-                      secondaryColor: ColorConfig.secondary,
-                      inputBackgroundColor: Colors.grey.shade900,
-                    ),
-                    showUserNames: true,
-                    messages: provider.messages,
-                    textMessageOptions: TextMessageOptions(isTextSelectable: true),
-                    onSendPressed: provider.handleSendPressed,
-                    user: provider.user,
-                  ).withSize(width: double.infinity).expand(),
-                ],
-              ),
-            ],
-          ),
-        );
+      body: Consumer<ChatMessagesProvider>(
+        builder: (BuildContext context, provider, _) {
+          return Container(
+            child: Stack(
+              children: [
+                Image.asset(
+                  "assets/icon/lingb.png", // Replace with your image asset
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+                Column(
+                  children: [
+                    Chat(
+                      theme: DefaultChatTheme(
+                        backgroundColor: Colors.transparent,
+                        primaryColor: Color(0xFF3385FF),
+                        secondaryColor: Colors.grey,
+                        inputBackgroundColor: Colors.grey.shade900,
+                      ),
+                      showUserNames: true,
+                      messages: provider.messages,
+                      //  customMessageBuilder: provider.customTextMessageBuilder,
+                      textMessageOptions:
+                          TextMessageOptions(isTextSelectable: true),
+                      onSendPressed: provider.handleSendPressed,
+                      user: provider.user,
+                    ).withSize(width: double.infinity).expand(),
+                  ],
+                ),
+              ],
+            ),
+          );
         },
-      
       ),
     );
   }

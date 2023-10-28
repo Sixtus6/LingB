@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lingb/config/socket/socket_client.dart';
 import 'package:lingb/screens/join_chat_room/create-room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
+import 'package:lingb/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class SocketMethods {
@@ -39,6 +40,7 @@ class SocketMethods {
           id: data["roomid"].toString() ?? "",
         ),
       );
+      roomIDController.text = data["roomid"].toString();
     });
   }
 }

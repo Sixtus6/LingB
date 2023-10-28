@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
@@ -34,8 +35,7 @@ class _CreateRoomState extends State<CreateRoom> {
                   //size: 25,
                 ).onTap(() {
                   finish(context);
-
-                  
+                  roomIDController.text = widget.id;
                 })
               ],
             ),

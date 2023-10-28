@@ -72,17 +72,36 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                 child: Column(
                   children: [
                     SizeConfigs.getPercentageWidth(6).toInt().height,
-                    CustomTextField(
-                      icon: Icons.chat_rounded,
-                      isEmail: false,
-                      text: 'Chat Room ID',
-                      myController: roomIDController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Field cannot be empty';
-                        }
-                        return null;
-                      },
+                    Column(
+                      children: [
+                        CustomTextField(
+                          icon: Icons.chat_rounded,
+                          isEmail: false,
+                          text: 'Chat Room ID',
+                          myController: roomIDController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Field cannot be empty';
+                            }
+                            return null;
+                          },
+                        ),
+                        Row(
+                          children: [
+                            Container().expand(),
+                            Text(
+                              'Create-Room',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorConfig.primary,
+                                fontSize: 13,
+                              ),
+                            ).onTap((){
+                              
+                            })
+                          ],
+                        )
+                      ],
                     ),
                     SizeConfigs.getPercentageWidth(6).toInt().height,
                     CustomTextField(

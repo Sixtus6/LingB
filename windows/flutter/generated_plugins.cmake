@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
   nb_utils
+  share_plus
   url_launcher_windows
 )
 

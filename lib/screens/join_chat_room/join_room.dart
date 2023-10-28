@@ -157,6 +157,24 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             ),
                           ),
                           onPressed: () {
+                            if (roomIDController.text.isEmptyOrNull) {
+                              toast("Enter Valid ChatRoom ID");
+                              return;
+                            }
+                            if (userNameController.text.isEmptyOrNull) {
+                              toast("Enter Username");
+                              return;
+                            }
+                            if (Provider.of<JoinRoomProvider>(context,
+                                        listen: false)
+                                    .selectedItem
+                                    .toLowerCase() ==
+                                "Select your preferred language"
+                                    .toLowerCase()) {
+                              toast("Select Prefered Language");
+                              return;
+                            }
+
                             ChatRoom(
                                     img:
                                         "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",

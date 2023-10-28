@@ -62,7 +62,8 @@ class DropdownMenuWithDecoration extends StatelessWidget {
 // List of items for the dropdown menu
 List<String> _items = [
   'Select your preferred language',
+  "English",
   'Hausa',
   'Igbo',
-  'French'
+  'Yoruba'
 ];

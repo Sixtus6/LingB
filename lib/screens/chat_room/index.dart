@@ -101,32 +101,34 @@ class _ChatRoomState extends State<ChatRoom> {
           },
         ),
       ),
-      body: Stack(
-        children: [
-          Image.asset(
-            "assets/icon/lingb.png", // Replace with your image asset
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          Column(
-            children: [
-              Chat(
-                theme: DefaultChatTheme(
-                  backgroundColor: Colors.transparent,
-                  primaryColor: Color(0xFF3385FF),
-                  secondaryColor: ColorConfig.secondary,
-                  inputBackgroundColor: Colors.grey.shade900,
-                ),
-                showUserNames: true,
-                messages: _messages,
-                textMessageOptions: TextMessageOptions(isTextSelectable: true),
-                onSendPressed: _handleSendPressed,
-                user: _user,
-              ).withSize(width: double.infinity).expand(),
-            ],
-          ),
-        ],
+      body: Container(
+        child: Stack(
+          children: [
+            Image.asset(
+              "assets/icon/lingb.png", // Replace with your image asset
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            Column(
+              children: [
+                Chat(
+                  theme: DefaultChatTheme(
+                    backgroundColor: Colors.transparent,
+                    primaryColor: Color(0xFF3385FF),
+                    secondaryColor: ColorConfig.secondary,
+                    inputBackgroundColor: Colors.grey.shade900,
+                  ),
+                  showUserNames: true,
+                  messages: _messages,
+                  textMessageOptions: TextMessageOptions(isTextSelectable: true),
+                  onSendPressed: _handleSendPressed,
+                  user: _user,
+                ).withSize(width: double.infinity).expand(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

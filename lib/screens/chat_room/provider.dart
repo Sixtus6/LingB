@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:lingb/config/color.dart';
+import 'package:lingb/config/size.dart';
 
 class ChatMessagesProvider with ChangeNotifier {
   final List<types.Message> _messages = [
@@ -95,15 +96,19 @@ class ChatMessagesProvider with ChangeNotifier {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(3.0),
+        padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(1)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (showName) // Check if showName is true
+
               Text(
-                isRecipientMessage ? message.author.firstName! : senderName,
+                isRecipientMessage
+                    ? capitalizeFirstLetter(message.author.firstName!)
+                    : senderName,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: ColorConfig.white),
+                    fontWeight: FontWeight.bold,
+                    color: ColorConfig.containerColor),
               ),
             Text(
               message.text,
@@ -116,4 +121,11 @@ class ChatMessagesProvider with ChangeNotifier {
       ),
     );
   }
+}
+
+String capitalizeFirstLetter(String text) {
+  if (text.isEmpty) {
+    return text; // Return the original string if it's empty
+  }
+  return text[0].toUpperCase() + text.substring(1).toLowerCase();
 }

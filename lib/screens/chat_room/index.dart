@@ -119,7 +119,7 @@ class _ChatRoomState extends State<ChatRoom> {
                     Chat(
                       theme: DefaultChatTheme(
                         backgroundColor: Colors.transparent,
-                        primaryColor: Color(0xFF3385FF),
+                        primaryColor: ColorConfig.primary,
                         secondaryColor: Colors.white30,
                         inputBackgroundColor: Colors.grey.shade900,
                       ),

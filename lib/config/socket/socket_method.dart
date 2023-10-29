@@ -43,4 +43,8 @@ class SocketMethods {
       roomIDController.text = data["roomid"].toString();
     });
   }
+
+  void joinRoom(String username, String roomid) {
+    _socket.emit(event["join"], {"username": username, "roomid": roomid});
+  }
 }

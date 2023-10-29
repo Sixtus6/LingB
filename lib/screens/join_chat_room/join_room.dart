@@ -146,7 +146,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       width: SizeConfigs.getPercentageWidth(85),
                       height: SizeConfigs.getPercentageWidth(18),
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
+                          style: ElevatedButton.styleFrom(  
                             shadowColor: ColorConfig.primary,
                             elevation: 10,
                             backgroundColor: ColorConfig.white,

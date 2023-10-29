@@ -46,6 +46,33 @@ class SocketMethods {
     });
   }
 
+/* -------------------------- Chat-room listerner ------------------------- */
+  void chatRoomEvent(BuildContext context) {
+    _socket.on(eventListeners["chat"][0], (data) {
+      Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
+        data,
+      );
+      // print(data);
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => CreateRoom(
+          id: data["roomid"].toString() ?? "",
+        ),
+      );
+      roomIDController.text = data["roomid"].toString();
+    });
+  }
+
+  void chatRoomErrorEvent(BuildContext context) {
+    _socket.on(eventListeners["chat"][1], (data) {
+      print(data);
+    });
+  }
+
+/* -------------------------------- JOIN ROOM ------------------------------- */
+
   void joinRoom(String username, String roomid) {
     _socket.emit(event["join"], {"username": username, "roomid": roomid});
   }
@@ -56,22 +83,6 @@ class SocketMethods {
       //   data,
       // );
       // print(data);
-      toast(data);
-    });
-  }
-
-  void kjoinRoomEvent(BuildContext context) {
-    _socket.on(eventListeners["join"][0], (data) {
-      // Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
-      //   data,
-      // );
-
-      ChatRoom(
-              img:
-                  "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
-              name: userNameController.text)
-          .launch(context);
-      print(data);
       toast(data);
     });
   }

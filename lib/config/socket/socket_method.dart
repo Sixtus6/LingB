@@ -3,6 +3,7 @@ import 'package:lingb/config/socket/socket_client.dart';
 import 'package:lingb/screens/join_chat_room/create-room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
 class SocketMethods {
@@ -46,5 +47,15 @@ class SocketMethods {
 
   void joinRoom(String username, String roomid) {
     _socket.emit(event["join"], {"username": username, "roomid": roomid});
+  }
+
+  void JoinRoomErrorListener(BuildContext context) {
+    _socket.on(eventListeners["join"][1], (data) {
+      // Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
+      //   data,
+      // );
+      print(data);
+      toast(data);
+    });
   }
 }

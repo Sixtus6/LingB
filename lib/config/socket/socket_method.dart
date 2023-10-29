@@ -72,12 +72,16 @@ class SocketMethods {
         text: data["users"][1]["messages"]
             [data["users"][1]["messages"].length - 1]["igbo"],
       );
-   final List<Map<String, dynamic>> usersData = List<Map<String, dynamic>>.from(data["users"]);
+      final List<Map<String, dynamic>> usersData =
+          List<Map<String, dynamic>>.from(data["users"]);
+
+      // Provider.of<ChatMessagesProvider>(context, listen: false)
+      //     .createMessagesForUsers(
+      //   usersData
+      // );
 
       Provider.of<ChatMessagesProvider>(context, listen: false)
-          .createMessagesForUsers(
-        usersData
-      );
+          .updateMessage(createTextMessageForUser(data["users"].length - 1));
     });
   }
 
@@ -105,6 +109,19 @@ class SocketMethods {
     }
 
     return messages;
+  }
+
+  types.TextMessage createTextMessageForUser(Map<String, dynamic> userData) {
+    final id = userData["messages"].length - 1;
+    return types.TextMessage(
+      author: types.User(
+        id: userData["socketID"],
+        firstName: userData["userName"],
+      ),
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      id: id.toString(),
+      text: userData["messages"][userData["messages"].length - 1]["igbo"],
+    );
   }
 
   void chatRoomErrorEvent(BuildContext context) {

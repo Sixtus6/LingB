@@ -177,8 +177,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               toast("Select Prefered Language");
                               return;
                             }
-                            _socketMethods.joinRoom(
-                                userNameController.text, roomIDController.text);
+                            _socketMethods.joinRoom(userNameController.text.trim(),
+                                roomIDController.text.trim());
 
                             //  JoinRoomScreen().launch(context, isNewTask: true);
                           },

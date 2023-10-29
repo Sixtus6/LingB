@@ -33,7 +33,7 @@ class SocketMethods {
       Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
         data,
       );
-      print(data);
+      // print(data);
 
       showDialog(
         context: context,
@@ -55,12 +55,12 @@ class SocketMethods {
       // Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
       //   data,
       // );
-      print(data);
+      // print(data);
       toast(data);
     });
   }
 
-  void joinRoomEvent(BuildContext context) {
+  void kjoinRoomEvent(BuildContext context) {
     _socket.on(eventListeners["join"][0], (data) {
       // Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
       //   data,
@@ -76,9 +76,10 @@ class SocketMethods {
     });
   }
 
-  void usersJoinRoomEvent(BuildContext context) {
+  void joinRoomEvent(BuildContext context) {
     _socket.on(eventListeners["join"][0], (data) {
-      if (data[data.length - 1]["userName"] == userNameController) {
+      print(data);
+      if (data[data.length - 1]["userName"] == userNameController.text) {
         ChatRoom(
                 img:
                     "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
@@ -93,7 +94,15 @@ class SocketMethods {
       // );
 
       print(data);
-      toast(data[data.length - 1]["userName"]);
+      toast(
+          capitalizeFirstLetter(data[data.length - 1]["userName"]) + " Joined");
     });
   }
+}
+
+String capitalizeFirstLetter(String text) {
+  if (text.isEmpty) {
+    return text; // Return the original string if it's empty
+  }
+  return text[0].toUpperCase() + text.substring(1).toLowerCase();
 }

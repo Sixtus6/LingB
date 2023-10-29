@@ -11,7 +11,7 @@ class JoinRoomProvider with ChangeNotifier {
   ) {
     _roomData = data;
     print("_roomData");
-    print(_roomData);
+    // print(_roomData);
     // showDialog(
     //   context: context,
     //   barrierDismissible: false,
@@ -27,7 +27,6 @@ class JoinRoomProvider with ChangeNotifier {
     print([hasUpdated]);
     notifyListeners();
   }
-
 
   String _selectedItem =
       'Select your preferred language'; // Initialize to an initial value

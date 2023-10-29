@@ -7,6 +7,7 @@ import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 class SocketMethods {
   final _socket = SocketClient.instance.socket!;
@@ -50,12 +51,21 @@ class SocketMethods {
 /* -------------------------- Chat-room listerner ------------------------- */
   void chatRoomEvent(BuildContext context) {
     _socket.on(eventListeners["chat"][0], (data) {
+      print(data);
 
+      // data["socketID"][1]["messages"];
+      types.TextMessage(
+        author: types.User(
+            id: data["users"][1]["socketID"],
+            firstName: data["users"][1]["userName"]),
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: data["users"][1]["messages"].length - 1,
+        text:  data["users"][1]["messages"][data.length - 1],
+      );
 
       // Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
       //   data,
       // );
-   
     });
   }
 

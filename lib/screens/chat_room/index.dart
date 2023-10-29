@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/config/socket/socket_method.dart';
 import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -28,6 +29,8 @@ class ChatRoom extends StatefulWidget {
   @override
   State<ChatRoom> createState() => _ChatRoomState();
 }
+
+  final SocketMethods _socketMethods = SocketMethods();
 
 class _ChatRoomState extends State<ChatRoom> {
   // final List<types.Message> _messages = [];
@@ -56,7 +59,12 @@ class _ChatRoomState extends State<ChatRoom> {
   //   _addMessage(textMessage);
   //   print(_messages);
   // }
-
+@override
+  // void initState() {
+  
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

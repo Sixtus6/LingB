@@ -29,6 +29,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
     _socketMethods.createRoomEvent(context);
     _socketMethods.joinRoomErrorListener(context);
     _socketMethods.joinRoomEvent(context);
+    _socketMethods.chatRoomEvent(context);
 
     print("initilized");
     // TODO: implement initState
@@ -177,8 +178,9 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               toast("Select Prefered Language");
                               return;
                             }
-                            _socketMethods.joinRoom(userNameController.text.trim(),
-                                roomIDController.text.trim());
+                            _socketMethods.joinRoom(
+                                userNameController.text,
+                                roomIDController.text);
 
                             //  JoinRoomScreen().launch(context, isNewTask: true);
                           },

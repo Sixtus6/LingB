@@ -72,16 +72,40 @@ class SocketMethods {
         text: data["users"][1]["messages"]
             [data["users"][1]["messages"].length - 1]["igbo"],
       );
+   final List<Map<String, dynamic>> usersData = List<Map<String, dynamic>>.from(data["users"]);
 
-      Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
-        mssg,
+      Provider.of<ChatMessagesProvider>(context, listen: false)
+          .createMessagesForUsers(
+        usersData
       );
     });
   }
 
+  List<types.Message> createMessagesForUsers(
+      List<Map<String, dynamic>> usersData) {
+    final List<types.Message> messages = [];
 
+    for (final userData in usersData) {
+      final socketID = userData["socketID"];
+      final userName = userData["userName"];
+      final messagesList = userData["messages"];
+      final lastMessageIndex =
+          messagesList.isNotEmpty ? messagesList.length - 1 : 0;
 
+      final textMessage = types.TextMessage(
+        author: types.User(id: socketID, firstName: userName),
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: lastMessageIndex.toString(),
+        text: messagesList.isNotEmpty
+            ? messagesList[lastMessageIndex]["igbo"]
+            : 'No messages yet',
+      );
 
+      messages.add(textMessage);
+    }
+
+    return messages;
+  }
 
   void chatRoomErrorEvent(BuildContext context) {
     _socket.on(eventListeners["chat"][1], (data) {

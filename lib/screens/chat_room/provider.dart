@@ -36,6 +36,33 @@ class ChatMessagesProvider with ChangeNotifier {
     ),
   ];
 
+List<types.Message> createMessagesForUsers(List<Map<String, dynamic>> usersData) {
+  final List<types.Message> messages = [];
+
+  for (final userData in usersData) {
+    final socketID = userData["socketID"];
+    final userName = userData["userName"];
+    final messagesList = userData["messages"];
+    final lastMessageIndex = messagesList.isNotEmpty ? messagesList.length - 1 : 0;
+
+    final textMessage = types.TextMessage(
+      author: types.User(id: socketID, firstName: userName),
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      id: lastMessageIndex.toString(),
+      text: messagesList.isNotEmpty
+          ? messagesList[lastMessageIndex]["igbo"]
+          : 'No messages yet',
+    );
+
+  messages.insert(0, textMessage);
+  
+  }
+
+  return messages;
+}
+
+
+
   void updateMessage(types.TextMessage message) {
     _messages.insert(0, message);
     notifyListeners();

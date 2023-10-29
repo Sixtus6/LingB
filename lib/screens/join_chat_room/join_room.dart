@@ -27,6 +27,9 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
   @override
   void initState() {
     _socketMethods.createRoomEvent(context);
+    _socketMethods.joinRoomErrorListener(context);
+    _socketMethods.joinRoomEvent(context);
+
     print("initilized");
     // TODO: implement initState
     super.initState();
@@ -176,11 +179,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             }
                             _socketMethods.joinRoom(
                                 userNameController.text, roomIDController.text);
-                            ChatRoom(
-                                    img:
-                                        "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
-                                    name: userNameController.text)
-                                .launch(context);
+
                             //  JoinRoomScreen().launch(context, isNewTask: true);
                           },
                           child: const Text(

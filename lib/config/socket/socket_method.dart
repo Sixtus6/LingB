@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lingb/config/socket/socket_client.dart';
 import 'package:lingb/screens/chat_room/index.dart';
+import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:lingb/screens/join_chat_room/create-room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
@@ -49,19 +50,12 @@ class SocketMethods {
 /* -------------------------- Chat-room listerner ------------------------- */
   void chatRoomEvent(BuildContext context) {
     _socket.on(eventListeners["chat"][0], (data) {
-      Provider.of<JoinRoomProvider>(context, listen: false).updateRoomData(
-        data,
-      );
-      // print(data);
 
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => CreateRoom(
-          id: data["roomid"].toString() ?? "",
-        ),
-      );
-      roomIDController.text = data["roomid"].toString();
+
+      // Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
+      //   data,
+      // );
+   
     });
   }
 

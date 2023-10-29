@@ -151,6 +151,7 @@ class SocketMethods {
       print(data);
       if (data[data.length - 1]["userName"] == userNameController.text) {
         ChatRoom(
+          messages: ,
                 img:
                     "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
                 name: userNameController.text)

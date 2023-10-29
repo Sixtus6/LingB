@@ -66,12 +66,12 @@ class _ChatRoomState extends State<ChatRoom> {
   //   // TODO: implement initState
   //   super.initState();
   // }
-String capitalizeFirstLetter(String text) {
-  if (text.isEmpty) {
-    return text; // Return the original string if it's empty
+  String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) {
+      return text; // Return the original string if it's empty
+    }
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
   }
-  return text[0].toUpperCase() + text.substring(1).toLowerCase();
-}
 
   @override
   Widget build(BuildContext context) {
@@ -103,29 +103,22 @@ String capitalizeFirstLetter(String text) {
           ],
         ),
         actions: [
-          Column(
-            children: [
-              Text(widget.name,
-                      style: secondaryTextStyle(
-                          weight: FontWeight.bold, color: ColorConfig.white))
-                  .paddingBottom(SizeConfigs.getPercentageWidth(1)),
-              // SizeConfigs.getPercentageWidth(1).toInt().height,
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Active User", style: secondaryTextStyle(size: 11)),
-                    SizeConfigs.getPercentageWidth(1).toInt().width,
-                    CircleAvatar(
-                      radius: SizeConfigs.getPercentageWidth(1),
-                      backgroundColor: widget.isOnline!
-                          ? ColorConfig.green
-                          : ColorConfig.red,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          // Text("Active Users",
+          //         style: secondaryTextStyle(
+          //             weight: FontWeight.bold, color: ColorConfig.white))
+          //     .paddingBottom(SizeConfigs.getPercentageWidth(1))
+          //     .paddingTop(SizeConfigs.getPercentageWidth(4)),
+          // // SizeConfigs.getPercentageWidth(1).toInt().height,
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Users:", style: secondaryTextStyle(size: 11)),
+                SizeConfigs.getPercentageWidth(2).toInt().width,
+                Text("12",
+                    style: secondaryTextStyle(size: 11, color: Colors.green)),
+              ],
+            ),
           ),
           // CircleAvatar(
           //     radius: SizeConfigs.getPercentageWidth(7),

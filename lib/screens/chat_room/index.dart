@@ -97,11 +97,35 @@ class _ChatRoomState extends State<ChatRoom> {
           ],
         ),
         actions: [
-          CircleAvatar(
-              radius: SizeConfigs.getPercentageWidth(7),
-              backgroundColor: ColorConfig.secondary,
-              backgroundImage: NetworkImage(widget.img)),
-          // .paddingLeft(SizeConfigs.getPercentageWidth(5)),
+          Column(
+            children: [
+              Text(widget.name,
+                      style: secondaryTextStyle(
+                          weight: FontWeight.bold, color: ColorConfig.white))
+                  .paddingBottom(SizeConfigs.getPercentageWidth(1)),
+              // SizeConfigs.getPercentageWidth(1).toInt().height,
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Active User", style: secondaryTextStyle(size: 11)),
+                    SizeConfigs.getPercentageWidth(1).toInt().width,
+                    CircleAvatar(
+                      radius: SizeConfigs.getPercentageWidth(1),
+                      backgroundColor: widget.isOnline!
+                          ? ColorConfig.green
+                          : ColorConfig.red,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          // CircleAvatar(
+          //     radius: SizeConfigs.getPercentageWidth(7),
+          //     backgroundColor: ColorConfig.secondary,
+          //     backgroundImage: NetworkImage(widget.img)),
+          // // .paddingLeft(SizeConfigs.getPercentageWidth(5)),
           SizeConfigs.getPercentageWidth(3).toInt().width,
         ],
         elevation: 10,

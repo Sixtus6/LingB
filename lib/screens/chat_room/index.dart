@@ -66,6 +66,12 @@ class _ChatRoomState extends State<ChatRoom> {
   //   // TODO: implement initState
   //   super.initState();
   // }
+String capitalizeFirstLetter(String text) {
+  if (text.isEmpty) {
+    return text; // Return the original string if it's empty
+  }
+  return text[0].toUpperCase() + text.substring(1).toLowerCase();
+}
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +81,7 @@ class _ChatRoomState extends State<ChatRoom> {
         backgroundColor: ColorConfig.black,
         title: Column(
           children: [
-            Text(widget.name,
+            Text(capitalizeFirstLetter(widget.name),
                     style: secondaryTextStyle(
                         weight: FontWeight.bold, color: ColorConfig.white))
                 .paddingBottom(SizeConfigs.getPercentageWidth(1)),

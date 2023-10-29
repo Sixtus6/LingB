@@ -30,7 +30,7 @@ class ChatRoom extends StatefulWidget {
   State<ChatRoom> createState() => _ChatRoomState();
 }
 
-  final SocketMethods _socketMethods = SocketMethods();
+final SocketMethods _socketMethods = SocketMethods();
 
 class _ChatRoomState extends State<ChatRoom> {
   // final List<types.Message> _messages = [];
@@ -59,12 +59,14 @@ class _ChatRoomState extends State<ChatRoom> {
   //   _addMessage(textMessage);
   //   print(_messages);
   // }
-@override
+  @override
   // void initState() {
-  
+  //   _socketMethods.chatRoomEvent(context);
+  //   print("init");
   //   // TODO: implement initState
   //   super.initState();
   // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

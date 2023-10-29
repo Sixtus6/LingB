@@ -51,23 +51,37 @@ class SocketMethods {
 /* -------------------------- Chat-room listerner ------------------------- */
   void chatRoomEvent(BuildContext context) {
     _socket.on(eventListeners["chat"][0], (data) {
-      print(data);
+      print("evenkt");
 
       // data["socketID"][1]["messages"];
-      types.TextMessage(
+
+      print(data["users"][1]["socketID"]);
+      print(data["users"][1]["userName"]);
+      print(data["users"][1]["messages"].length - 1);
+      print(data["users"][1]["messages"]);
+      print(data["users"][1]["messages"]
+          [data["users"][1]["messages"].length - 1]);
+      var id = data["users"][1]["messages"].length - 1;
+      print(id.runtimeType);
+      types.TextMessage mssg = types.TextMessage(
         author: types.User(
             id: data["users"][1]["socketID"],
             firstName: data["users"][1]["userName"]),
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: data["users"][1]["messages"].length - 1,
-        text:  data["users"][1]["messages"][data.length - 1],
+        id: id.toString(),
+        text: data["users"][1]["messages"]
+            [data["users"][1]["messages"].length - 1]["igbo"],
       );
 
-      // Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
-      //   data,
-      // );
+      Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
+        mssg,
+      );
     });
   }
+
+
+
+
 
   void chatRoomErrorEvent(BuildContext context) {
     _socket.on(eventListeners["chat"][1], (data) {

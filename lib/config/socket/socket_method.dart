@@ -79,9 +79,9 @@ class SocketMethods {
       //     .createMessagesForUsers(
       //   usersData
       // );
-
-      Provider.of<ChatMessagesProvider>(context, listen: false)
-          .updateMessage(createTextMessageForUser(data["users"].length - 1));
+// Map<String, dynamic> lastuser =
+      Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
+          createTextMessageForUser(data["users"][data["users"].length - 1]));
     });
   }
 
@@ -92,7 +92,7 @@ class SocketMethods {
     for (final userData in usersData) {
       final socketID = userData["socketID"];
       final userName = userData["userName"];
-      final messagesList = userData["messages"];
+      final messagesList = userData["messages"] ?? "N/A";
       final lastMessageIndex =
           messagesList.isNotEmpty ? messagesList.length - 1 : 0;
 

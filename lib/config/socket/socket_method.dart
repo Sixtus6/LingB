@@ -145,6 +145,8 @@ class SocketMethods {
         Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
           data.length.toString(),
         );
+      socketIDController.text = data[data.length - 1]["socketID"];
+        socketIDController.text = data[data.length - 1]["socketID"];
 
         ChatRoom(
                 messages: data.length.toString(),
@@ -160,11 +162,10 @@ class SocketMethods {
       //   data,
       // );
 
-      print(data[data.length - 1]["socketID"]);
       Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
         data.length.toString(),
       );
-      socketIDController.text = data[data.length - 1]["socketID"];
+
       toast(
           capitalizeFirstLetter(data[data.length - 1]["userName"]) + " Joined");
     });

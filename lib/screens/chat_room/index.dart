@@ -3,11 +3,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/config/socket/socket_method.dart';
 import 'package:lingb/screens/chat_room/provider.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
+import 'package:lingb/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -174,7 +176,9 @@ class _ChatRoomState extends State<ChatRoom> {
                       onSendPressed: provider.handleSendPressed,
 
                       // onSendPressed: provider.handleSendPressed,
-                      user: provider.user,
+                      user: User(
+                          id: socketIDController.text,
+                          firstName: userNameController.text),
                       textMessageBuilder: provider.customTextMessageBuilders,
                     ).withSize(width: double.infinity).expand(),
                   ],

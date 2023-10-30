@@ -77,6 +77,8 @@ class ChatMessagesProvider with ChangeNotifier {
 
   final user = const types.User(
       id: "82091008-a484-4a89-ae75-a22bf8d6f3ac", firstName: "sixtus");
+
+  void assignUser() {}
   List<types.Message> get messages => _messages;
 
   void addMessage(types.Message message) {
@@ -98,11 +100,10 @@ class ChatMessagesProvider with ChangeNotifier {
       id: randomString(),
       text: message.text,
     );
-    print(socketIDController.text);
-    _socketMethods.createchat(
-        roomIDController.text, message.text, socketIDController.text);
+    print([socketIDController.text, message.text]);
+    _socketMethods.createchat(roomIDController.text, message.text.toString(),
+        socketIDController.text);
     // addMessage(textMessage);
-    print(_messages);
   }
 
   Widget customTextMessageBuilders(types.TextMessage message,

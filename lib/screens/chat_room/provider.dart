@@ -12,32 +12,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 class ChatMessagesProvider with ChangeNotifier {
   final SocketMethods _socketMethods = SocketMethods();
-  final List<types.Message> _messages = [
-    types.TextMessage(
-      author: const types.User(
-          id: "82091008-a484-4a89-ae75-a22bf8d6f3ac", firstName: "sixtus"),
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: '1',
-      text: 'Hello, this is a sender message.',
-    ),
-    // Example recipient message
-    types.TextMessage(
-      author: const types.User(
-          id: '82091008-a484-4a89-aeu75ere-a2er-bfre8de6fac',
-          firstName: "francis"),
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: '2',
-      text: 'Hi, this is a recipient message.',
-    ),
-    types.TextMessage(
-      author: const types.User(
-          id: '82091008-a484-4a89-aedu75ere-a2er-bfre8de6fac',
-          firstName: "jacob"),
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: '3',
-      text: 'Hi, waggan.',
-    ),
-  ];
+  final List<types.Message> _messages = [];
 
   List<types.Message> createMessagesForUsers(
       List<Map<String, dynamic>> usersData) {

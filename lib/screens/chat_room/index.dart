@@ -8,12 +8,15 @@ import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/config/socket/socket_method.dart';
 import 'package:lingb/screens/chat_room/provider.dart';
+import 'package:lingb/screens/join_chat_room/join_room.dart';
 import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:lingb/utils/constants.dart';
+import 'package:lingb/widget/dropdown.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ChatRoom extends StatefulWidget {
   const ChatRoom(
@@ -22,10 +25,14 @@ class ChatRoom extends StatefulWidget {
       required this.name,
       this.messages,
       this.time,
-      this.isOnline = true});
+      this.isOnline = true,
+      this.userid,
+      this.firstname});
   final String img;
   final String name;
   final String? messages;
+  final String? userid;
+  final String? firstname;
   final String? time;
   final bool? isOnline;
 
@@ -81,25 +88,66 @@ class _ChatRoomState extends State<ChatRoom> {
         toolbarHeight: SizeConfigs.getPercentageWidth(16),
         backgroundColor: ColorConfig.black,
         title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(capitalizeFirstLetter(widget.name),
-                    style: secondaryTextStyle(
-                        weight: FontWeight.bold, color: ColorConfig.white))
-                .paddingBottom(SizeConfigs.getPercentageWidth(1)),
+            SizeConfigs.getPercentageWidth(1).toInt().height,
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(capitalizeFirstLetter(widget.firstname! + " "),
+                        style: secondaryTextStyle(
+                            weight: FontWeight.bold, color: ColorConfig.white)),
+                    SizeConfigs.getPercentageWidth(1).toInt().width,
+                    CircleAvatar(
+                      radius: SizeConfigs.getPercentageWidth(1),
+                      backgroundColor: Colors.green,
+                    ),
+                  ],
+                ),
+              ],
+            ),
             // SizeConfigs.getPercentageWidth(1).toInt().height,
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Online", style: secondaryTextStyle(size: 11)),
-                  SizeConfigs.getPercentageWidth(1).toInt().width,
-                  CircleAvatar(
-                    radius: SizeConfigs.getPercentageWidth(1),
-                    backgroundColor:
-                        widget.isOnline! ? ColorConfig.green : ColorConfig.red,
+            Consumer<JoinRoomProvider>(
+              builder: (BuildContext context, dropdownModel, _) {
+                return Container(
+                  height: SizeConfigs.getPercentageWidth(5),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      icon: Shimmer.fromColors(
+                          baseColor: ColorConfig.primary,
+                          highlightColor: ColorConfig.white,
+                          child: Icon(
+                            Icons.arrow_drop_down,
+                          )),
+                      value: dropdownModel.selectedItem,
+                      iconEnabledColor: ColorConfig.primary,
+                      borderRadius: BorderRadius.circular(15),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          dropdownModel.setSelectedItem(newValue);
+                        }
+                      },
+                      items: _items.map<DropdownMenuItem<String>>(
+                        (String value) {
+                          /// print(value.runtimeType);
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ],
         ),
@@ -111,26 +159,45 @@ class _ChatRoomState extends State<ChatRoom> {
           //     .paddingTop(SizeConfigs.getPercentageWidth(4)),
           // // SizeConfigs.getPercentageWidth(1).toInt().height,
           Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                Text("Users:", style: secondaryTextStyle(size: 11)),
-                SizeConfigs.getPercentageWidth(1).toInt().width,
+                SizeConfigs.getPercentageWidth(5).toInt().height,
                 Consumer<JoinRoomProvider>(
-                  builder: (BuildContext context, provider, _) {
-                    return Text(provider.count.toString(),
+                    builder: (context, joinRoomProvider, _) {
+                  return Row(
+                    children: [
+                      Text(
+                        'lang:',
+                        style: secondaryTextStyle(size: 13),
+                      ),
+                      Text(
+                        ' ${joinRoomProvider.selectedItem}',
                         style:
-                            secondaryTextStyle(size: 11, color: Colors.green));
-                  },
+                            secondaryTextStyle(size: 11, color: Colors.white),
+                      ),
+                    ],
+                  );
+                }),
+                SizeConfigs.getPercentageWidth(1).toInt().height,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Users:", style: secondaryTextStyle(size: 11)),
+                    SizeConfigs.getPercentageWidth(1).toInt().width,
+                    Consumer<JoinRoomProvider>(
+                      builder: (BuildContext context, provider, _) {
+                        return Text(provider.count.toString(),
+                            style: secondaryTextStyle(
+                                size: 11, color: Colors.green));
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-          // CircleAvatar(
-          //     radius: SizeConfigs.getPercentageWidth(7),
-          //     backgroundColor: ColorConfig.secondary,
-          //     backgroundImage: NetworkImage(widget.img)),
-          // // .paddingLeft(SizeConfigs.getPercentageWidth(5)),
+
+          // .paddingLeft(SizeConfigs.getPercentageWidth(5)),
           SizeConfigs.getPercentageWidth(3).toInt().width,
         ],
         elevation: 10,
@@ -138,7 +205,8 @@ class _ChatRoomState extends State<ChatRoom> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: ColorConfig.primary),
           onPressed: () {
-            finish(context);
+            // finish(context);
+            JoinRoomScreen().launch(context);
           },
           //import 'package:socket_io_client/socket_io_client.dart' as io;
         ),
@@ -176,9 +244,8 @@ class _ChatRoomState extends State<ChatRoom> {
                       onSendPressed: provider.handleSendPressed,
 
                       // onSendPressed: provider.handleSendPressed,
-                      user: User(
-                          id: socketIDController.text,
-                          firstName: userNameController.text),
+                      user:
+                          User(id: widget.userid!, firstName: widget.firstname),
                       textMessageBuilder: provider.customTextMessageBuilders,
                     ).withSize(width: double.infinity).expand(),
                   ],
@@ -191,3 +258,5 @@ class _ChatRoomState extends State<ChatRoom> {
     );
   }
 }
+
+List<String> _items = ["English", 'Hausa', 'Igbo', 'Yoruba'];

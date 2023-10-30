@@ -58,7 +58,7 @@ class SocketMethods {
 
       Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
           createTextMessageForUser(
-              data["users"][data["users"].length - 1], data));
+              data["users"][data["users"].length - 1], data, context));
     });
   }
 
@@ -95,13 +95,28 @@ class SocketMethods {
   }
 
   types.TextMessage createTextMessageForUser(
-      Map<String, dynamic> userData, data) {
+      Map<String, dynamic> userData, data, BuildContext context) {
     print(data["messages"][data["messages"].length - 1]["socketID"].toString());
     print(data["messages"][data["messages"].length - 1]["username"]);
     print(data["messages"][data["messages"].length - 1]["igbo"]);
     print(data["messages"].length - 1);
 
     final id = data["messages"].length - 1;
+
+    final selectedItem = Provider.of<JoinRoomProvider>(context, listen: false)
+        .selectedItem
+        .toLowerCase();
+    String text;
+
+    if (selectedItem == "igbo") {
+      text = data["messages"][data["messages"].length - 1]["igbo"];
+    } else if (selectedItem == "yoruba") {
+      text = data["messages"][data["messages"].length - 1]["yoruba"];
+    } else if (selectedItem == "hausa") {
+      text = data["messages"][data["messages"].length - 1]["hausa"];
+    } else {
+      text = data["messages"][data["messages"].length - 1]["eng"];
+    }
     return types.TextMessage(
       author: types.User(
         id: data["messages"][data["messages"].length - 1]["socketID"]
@@ -112,7 +127,7 @@ class SocketMethods {
       id: id.toString(),
       // text: userData["messages"][userData["messages"].length - 1]["igbo"],
 
-      text: data["messages"][data["messages"].length - 1]["igbo"],
+      text: text,
     );
   }
 
@@ -145,11 +160,13 @@ class SocketMethods {
         Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
           data.length.toString(),
         );
-      socketIDController.text = data[data.length - 1]["socketID"];
         socketIDController.text = data[data.length - 1]["socketID"];
+        //  socketIDController.text = data[data.length - 1]["socketID"];
 
         ChatRoom(
+                userid: data[data.length - 1]["socketID"],
                 messages: data.length.toString(),
+                firstname: data[data.length - 1]["userName"],
                 img:
                     "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
                 name: userNameController.text)

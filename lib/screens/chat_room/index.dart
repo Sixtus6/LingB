@@ -31,8 +31,6 @@ class ChatRoom extends StatefulWidget {
   State<ChatRoom> createState() => _ChatRoomState();
 }
 
-final SocketMethods _socketMethods = SocketMethods();
-
 class _ChatRoomState extends State<ChatRoom> {
   // final List<types.Message> _messages = [];
   // final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
@@ -174,6 +172,8 @@ class _ChatRoomState extends State<ChatRoom> {
                       textMessageOptions:
                           TextMessageOptions(isTextSelectable: true),
                       onSendPressed: provider.handleSendPressed,
+
+                      // onSendPressed: provider.handleSendPressed,
                       user: provider.user,
                       textMessageBuilder: provider.customTextMessageBuilders,
                     ).withSize(width: double.infinity).expand(),

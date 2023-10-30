@@ -6,9 +6,12 @@ import 'dart:math';
 
 import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
+import 'package:lingb/config/socket/socket_method.dart';
+import 'package:lingb/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class ChatMessagesProvider with ChangeNotifier {
+  final SocketMethods _socketMethods = SocketMethods();
   final List<types.Message> _messages = [
     types.TextMessage(
       author: const types.User(
@@ -95,8 +98,10 @@ class ChatMessagesProvider with ChangeNotifier {
       id: randomString(),
       text: message.text,
     );
-
-    addMessage(textMessage);
+    print(socketIDController.text);
+    _socketMethods.createchat(
+        roomIDController.text, message.text, socketIDController.text);
+    // addMessage(textMessage);
     print(_messages);
   }
 

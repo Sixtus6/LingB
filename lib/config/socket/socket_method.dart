@@ -62,9 +62,10 @@ class SocketMethods {
     });
   }
 
-  void createchat(String roomid, String message, String socketid) {
+  createchat(String roomid, String message, String socketid) {
     _socket.emit(event["chat"],
         {"roomid": roomid, "message": message, "socketid": socketid});
+    print("created");
   }
 
   List<types.Message> createMessagesForUsqers(
@@ -159,10 +160,11 @@ class SocketMethods {
       //   data,
       // );
 
-      print(data);
+      print(data[data.length - 1]["socketID"]);
       Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
         data.length.toString(),
       );
+      socketIDController.text = data[data.length - 1]["socketID"];
       toast(
           capitalizeFirstLetter(data[data.length - 1]["userName"]) + " Joined");
     });

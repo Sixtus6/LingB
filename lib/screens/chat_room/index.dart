@@ -7,6 +7,7 @@ import 'package:lingb/config/color.dart';
 import 'package:lingb/config/size.dart';
 import 'package:lingb/config/socket/socket_method.dart';
 import 'package:lingb/screens/chat_room/provider.dart';
+import 'package:lingb/screens/join_chat_room/provider.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -114,9 +115,14 @@ class _ChatRoomState extends State<ChatRoom> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Users:", style: secondaryTextStyle(size: 11)),
-                SizeConfigs.getPercentageWidth(2).toInt().width,
-                Text("12",
-                    style: secondaryTextStyle(size: 11, color: Colors.green)),
+                SizeConfigs.getPercentageWidth(1).toInt().width,
+                Consumer<JoinRoomProvider>(
+                  builder: (BuildContext context, provider, _) {
+                    return Text(provider.count.toString(),
+                        style:
+                            secondaryTextStyle(size: 11, color: Colors.green));
+                  },
+                ),
               ],
             ),
           ),

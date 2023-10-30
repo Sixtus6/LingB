@@ -81,11 +81,11 @@ class SocketMethods {
       // );
 // Map<String, dynamic> lastuser =
       Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
-          createTextMessageForUser(data["users"][data["users"].length - 1]));
+          createTextMessageForUser(data["users"][data["users"].length - 1],data));
     });
   }
 
-  List<types.Message> createMessagesForUsers(
+  List<types.Message> createMessagesForUsqers(
       List<Map<String, dynamic>> usersData) {
     final List<types.Message> messages = [];
 
@@ -111,7 +111,7 @@ class SocketMethods {
     return messages;
   }
 
-  types.TextMessage createTextMessageForUser(Map<String, dynamic> userData) {
+  types.TextMessage createTextMessageForUser(Map<String, dynamic> userData, data) {
     final id = userData["messages"].length - 1;
     return types.TextMessage(
       author: types.User(
@@ -120,7 +120,7 @@ class SocketMethods {
       ),
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: id.toString(),
-      text: userData["messages"][userData["messages"].length - 1]["igbo"],
+      text: data["messages"].length - 1["igbo"],
     );
   }
 
@@ -150,8 +150,12 @@ class SocketMethods {
     _socket.on(eventListeners["join"][0], (data) {
       print(data);
       if (data[data.length - 1]["userName"] == userNameController.text) {
+        Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
+          data.length.toString(),
+        );
+
         ChatRoom(
-          messages: ,
+                messages: data.length.toString(),
                 img:
                     "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
                 name: userNameController.text)
@@ -165,6 +169,9 @@ class SocketMethods {
       // );
 
       print(data);
+      Provider.of<JoinRoomProvider>(context, listen: false).updateCount(
+        data.length.toString(),
+      );
       toast(
           capitalizeFirstLetter(data[data.length - 1]["userName"]) + " Joined");
     });

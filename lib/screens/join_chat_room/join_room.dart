@@ -53,8 +53,11 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
         child: Column(
           children: [
             SizeConfigs.getPercentageWidth(2).toInt().height,
-            Lottie.asset(
-              "assets/lottie/onboard1.json",
+            Padding(
+              padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(5)),
+              child: Lottie.asset(
+                "assets/lottie/onboard4.json",
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(SizeConfigs.getPercentageWidth(8)),
@@ -179,8 +182,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               return;
                             }
                             _socketMethods.joinRoom(
-                                userNameController.text,
-                                roomIDController.text);
+                                userNameController.text, roomIDController.text);
 
                             //  JoinRoomScreen().launch(context, isNewTask: true);
                           },
@@ -193,7 +195,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             ),
                           )),
                     ),
-                    SizeConfigs.getPercentageWidth(16).toInt().height,
+                    // SizeConfigs.getPercentageWidth(1).toInt().height,
                     // Consumer<JoinRoomProvider>(
                     //     builder: (context, joinRoomProvider, _) {
                     //   return Text(

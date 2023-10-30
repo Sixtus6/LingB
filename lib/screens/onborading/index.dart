@@ -136,7 +136,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             onPressed: () {
                               const JoinRoomScreen().launch(context,
-                                  //  duration: Duration(seconds: 1),
+                                   duration: Duration(seconds: 1),
                                   pageRouteAnimation: PageRouteAnimation.Fade,
                                   isNewTask: true);
                             },

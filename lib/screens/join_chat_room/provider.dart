@@ -6,6 +6,16 @@ class JoinRoomProvider with ChangeNotifier {
   Map<String, dynamic> get roomData => {};
   bool hasUpdated = false;
 
+  String _count = "";
+  String get count => _count;
+
+  void updateCount(String count) {
+    print(count);
+    _count = count;
+    print(_count);
+    notifyListeners();
+  }
+
   void updateRoomData(
     Map<String, dynamic> data,
   ) {

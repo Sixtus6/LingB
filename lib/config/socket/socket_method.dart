@@ -55,23 +55,23 @@ class SocketMethods {
 
       // data["socketID"][1]["messages"];
 
-      print(data["users"][1]["socketID"]);
-      print(data["users"][1]["userName"]);
-      print(data["users"][1]["messages"].length - 1);
-      print(data["users"][1]["messages"]);
-      print(data["users"][1]["messages"]
-          [data["users"][1]["messages"].length - 1]);
-      var id = data["users"][1]["messages"].length - 1;
-      print(id.runtimeType);
-      types.TextMessage mssg = types.TextMessage(
-        author: types.User(
-            id: data["users"][1]["socketID"],
-            firstName: data["users"][1]["userName"]),
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: id.toString(),
-        text: data["users"][1]["messages"]
-            [data["users"][1]["messages"].length - 1]["igbo"],
-      );
+      // print(data["users"][1]["socketID"]);
+      // print(data["users"][1]["userName"]);
+      // print(data["users"][1]["messages"].length - 1);
+      // print(data["users"][1]["messages"]);
+      // print(data["users"][1]["messages"]
+      //     [data["users"][1]["messages"].length - 1]);
+      // var id = data["users"][1]["messages"].length - 1;
+      print(3.runtimeType);
+      // types.TextMessage mssg = types.TextMessage(
+      //   author: types.User(
+      //       id: data["users"][1]["socketID"],
+      //       firstName: data["users"][1]["userName"]),
+      //   createdAt: DateTime.now().millisecondsSinceEpoch,
+      //   id: 3.toString(),
+      //   text: data["users"][1]["messages"]
+      //       [data["users"][1]["messages"].length - 1]["igbo"],
+      // );
       final List<Map<String, dynamic>> usersData =
           List<Map<String, dynamic>>.from(data["users"]);
 
@@ -81,7 +81,8 @@ class SocketMethods {
       // );
 // Map<String, dynamic> lastuser =
       Provider.of<ChatMessagesProvider>(context, listen: false).updateMessage(
-          createTextMessageForUser(data["users"][data["users"].length - 1],data));
+          createTextMessageForUser(
+              data["users"][data["users"].length - 1], data));
     });
   }
 
@@ -111,16 +112,24 @@ class SocketMethods {
     return messages;
   }
 
-  types.TextMessage createTextMessageForUser(Map<String, dynamic> userData, data) {
-    final id = userData["messages"].length - 1;
+  types.TextMessage createTextMessageForUser(
+      Map<String, dynamic> userData, data) {
+    print(data["messages"][data["messages"].length-1]["socketID"].toString());
+    print(data["messages"][data["messages"].length-1]["username"]);
+    print(data["messages"][data["messages"].length - 1]["igbo"]);
+    print(data["messages"].length - 1);
+
+    final id = data["messages"].length - 1;
     return types.TextMessage(
       author: types.User(
-        id: userData["socketID"],
-        firstName: userData["userName"],
+        id: data["messages"][data["messages"].length-1]["socketID"].toString(),
+        firstName: data["messages"][data["messages"].length-1]["username"],
       ),
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: id.toString(),
-      text: data["messages"].length - 1["igbo"],
+      // text: userData["messages"][userData["messages"].length - 1]["igbo"],
+
+      text: data["messages"][data["messages"].length - 1]["igbo"],
     );
   }
 

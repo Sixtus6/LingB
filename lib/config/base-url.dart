@@ -1,4 +1,3 @@
 class Apis {
-  static String socket_url = "https://d893-129-205-113-157.ngrok-free.app";
+  static String socket_url = "http://192.168.211.131:3009";
 }
-

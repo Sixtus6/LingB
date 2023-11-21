@@ -114,9 +114,12 @@ class SocketMethods {
       text = data["messages"][data["messages"].length - 1]["yoruba"];
     } else if (selectedItem == "hausa") {
       text = data["messages"][data["messages"].length - 1]["hausa"];
-    } else {
+    } else if (selectedItem == "english") {
       text = data["messages"][data["messages"].length - 1]["eng"];
+    } else {
+      text = data["messages"][data["messages"].length - 1]["local"];
     }
+
     return types.TextMessage(
       author: types.User(
         id: data["messages"][data["messages"].length - 1]["socketID"]
@@ -170,7 +173,7 @@ class SocketMethods {
                 img:
                     "https://images.generated.photos/5up69kRDRX1KuGSbcG54wE0M4UWeT5gdNoXDJElP7Is/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYxMDYxLmpwZw.jpg",
                 name: userNameController.text)
-            .launch(context);
+            .launch(context, isNewTask: true);
 
         return;
       }

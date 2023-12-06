@@ -1,6 +1,6 @@
-# lingb
+# Lingb
 
-A new Flutter project.
+Introducing a chat app where language is not a barrier. Choose your local language and chat effortlessly with anyone, anywhere. Our real-time translation feature ensures smooth communication, connecting you despite different languages spoken.
 
 ## Getting Started
 
